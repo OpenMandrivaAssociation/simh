@@ -1,0 +1,28 @@
+diff -urN simh-3.8.1/AltairZ80/altairz80_cpu.c simh-3.8.1-patched/AltairZ80/altairz80_cpu.c
+--- simh-3.8.1/AltairZ80/altairz80_cpu.c	2008-11-20 04:02:20.000000000 +1000
++++ simh-3.8.1-patched/AltairZ80/altairz80_cpu.c	2012-02-16 01:08:26.369368161 +1100
+@@ -6388,10 +6388,10 @@
+ static t_stat chip_show(FILE *st, UNIT *uptr, int32 val, void *desc) {
+     fprintf(st, cpu_unit.flags & UNIT_CPU_OPSTOP ? "ITRAP, " : "NOITRAP, ");
+     if (chiptype <= MAX_CHIP_TYPE)
+-        fprintf(st, chipTypeToString[chiptype]);
++        fprintf(st, "%s", chipTypeToString[chiptype]);
+     fprintf(st, ", ");
+     if (ramtype <= MAX_RAM_TYPE)
+-        fprintf(st, ramTypeToString[ramtype]);
++        fprintf(st, "%s", ramTypeToString[ramtype]);
+     return SCPE_OK;
+ }
+ 
+diff -urN simh-3.8.1/I1620/i1620_sys.c simh-3.8.1-patched/I1620/i1620_sys.c
+--- simh-3.8.1/I1620/i1620_sys.c	2008-11-22 18:38:08.000000000 +1000
++++ simh-3.8.1-patched/I1620/i1620_sys.c	2012-02-16 01:03:38.048371221 +1100
+@@ -390,7 +390,7 @@
+ if (I_GETQP (opfl) == I_M_QNP)                          /* Q no print? */
+     qmp = 0;
+ 
+-fprintf (of, opcode[i].str);                            /* print opcode */
++fprintf (of, "%s", opcode[i].str);                            /* print opcode */
+ if (I_GETPP (opfl) == I_M_PP)                           /* P required? */
+     fprint_addr (of, ' ', &val[I_P], I_M_QX);
+ else if ((I_GETPP (opfl) == I_M_PCP) && (pmp || qmp))   /* P opt & needed? */
