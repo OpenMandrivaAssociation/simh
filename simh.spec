@@ -73,3 +73,10 @@ for i in `find -iname "*.txt"`; do dos2unix -k $i; done
 %doc S3/haltguide.txt S3/readme_s3.txt S3/system3.txt SDS/sds_diag.txt
 %doc VAX/vax780_bug_history.txt
 
+
+
+%changelog
+* Wed Feb 15 2012 Andrey Bondrov <abondrov@mandriva.org> 3.8.1-1mdv2011.0
++ Revision: 774411
+- imported package simh
+
