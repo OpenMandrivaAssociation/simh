@@ -2,7 +2,7 @@
 
 Name:		simh
 Version:	3.8.1
-Release:	%mkrel 1
+Release:	2
 Summary:	A highly portable, multi-system emulator
 Group:		Emulators
 License:	MIT and GPLv1+
