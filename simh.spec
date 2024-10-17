@@ -6,7 +6,7 @@ Release:	2
 Summary:	A highly portable, multi-system emulator
 Group:		Emulators
 License:	MIT and GPLv1+
-URL:		http://simh.trailing-edge.com/
+URL:		https://simh.trailing-edge.com/
 Source0:	simh-%{version}-noroms.tar.gz
 # we use this to remove the roms binary and patented code before shipping it.
 # Download the upstream tarball and invoke this script while in the
