@@ -15,6 +15,7 @@ Source1:	simh-generate-tarball.sh
 Patch0:		simh-3.8.1-makefile.patch
 Patch1:		simh-3.8.1-altair-segfault.patch
 Patch2:		simh-3.8.1-fmt.patch
+BuildRequires:	make
 BuildRequires:	pcap-devel
 BuildRequires:	dos2unix
 
