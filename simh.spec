@@ -1,20 +1,20 @@
 # Based on spec from Fedora
 
 Name:		simh
-Version:	3.8.1
-Release:	2
+Version:	3.12.5
+Release:	1
 Summary:	A highly portable, multi-system emulator
 Group:		Emulators
 License:	MIT and GPLv1+
 URL:		https://simh.trailing-edge.com/
 Source0:	simh-%{version}-noroms.tar.gz
 # we use this to remove the roms binary and patented code before shipping it.
-# Download the upstream tarball and invoke this script while in the
-# tarball's directory: ./simh-generate-tarball.sh 3.8.1
+# Download the upstream zip and invoke this script while in the
+# zip's directory: ./simh-generate-tarball.sh 3.12.5
 Source1:	simh-generate-tarball.sh
-Patch0:		simh-3.8.1-makefile.patch
-Patch1:		simh-3.8.1-altair-segfault.patch
-Patch2:		simh-3.8.1-fmt.patch
+Patch0:		simh-3.12.5-makefile.patch
+Patch1:		simh-3.12.5-altair-segfault.patch
+Patch2:		simh-3.12.5-fmt.patch
 BuildRequires:	make
 BuildRequires:	pcap-devel
 BuildRequires:	dos2unix
@@ -42,11 +42,12 @@ SIMH implements simulators for:
 * Scientific Data Systems SDS 940
 
 %prep
-%setup -q
+# Upstream zip uses a top-level sim/ directory
+%setup -q -n simh-%{version}/sim
 dos2unix makefile
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P0 -p1
+%patch -P1 -p1
+%patch -P2 -p1
 
 %build
 %__mkdir_p BIN

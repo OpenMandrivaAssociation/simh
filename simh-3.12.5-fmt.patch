@@ -1,0 +1,41 @@
+--- a/PDP11/pdp11_io_lib.c
++++ b/PDP11/pdp11_io_lib.c
+@@ -61,7 +61,7 @@
+ t_stat show_autocon (FILE *st, UNIT *uptr, int32 val, void *desc)
+ {
+ fprintf (st, "autoconfiguration ");
+-fprintf (st, autcon_enb? "enabled": "disabled");
++fprintf (st, "%s", autcon_enb? "enabled": "disabled");
+ return SCPE_OK;
+ }
+ 
+--- a/sigma/sigma_lp.c
++++ b/sigma/sigma_lp.c
+@@ -571,6 +571,6 @@
+ 
+ t_stat lp_showtype (FILE *st, UNIT *uptr, int32 val, CONST void *desc)
+ {
+-fprintf (st, lp_model? "7450": "7440");
++fprintf (st, "%s", lp_model? "7450": "7440");
+ return SCPE_OK;
+ }
+--- a/PDP1/pdp1_sys.c
++++ b/PDP1/pdp1_sys.c
+@@ -517,7 +517,7 @@
+             if (opcode[i])
+                 sp = fprintf (of, (sp? " %s": "%s"), opcode[i]);
+             if (inst & IA)
+-                fprintf (of, sp? " I": "I");
++                fprintf (of, "%s", sp? " I": "I");
+             break;
+ 
+         case I_V_SPC:                                   /* specials */
+@@ -525,7 +525,7 @@
+             if (opcode[i])
+                 sp = fprintf (of, (sp? " %s": "%s"), opcode[i]);
+             if (inst & IA)
+-                fprintf (of, sp? " I": "I");
++                fprintf (of, "%s", sp? " I": "I");
+             break;
+ 
+         case I_V_SHF:                                   /* shifts */

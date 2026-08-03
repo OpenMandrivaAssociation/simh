@@ -1,0 +1,11 @@
+--- a/ALTAIR/altair_dsk.c
++++ b/ALTAIR/altair_dsk.c
+@@ -362,6 +362,8 @@
+                         cur_sect[cur_disk]); i = getch(); */
+     pos = DSK_TRACSIZE * cur_track[cur_disk];           /* calc file pos */
+     pos += DSK_SECTSIZE * cur_sect[cur_disk];
++    if ((dptr == NULL) || (dptr->fileref == NULL))
++        return;
+     rtn = fseek(dptr -> fileref, pos, 0);
+     rtn = fwrite(dskbuf, 137, 1, dptr -> fileref);
+     cur_flags[cur_disk] &= 0xFE;                        /* ENWD off */

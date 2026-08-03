@@ -1,0 +1,14 @@
+--- a/makefile
++++ b/makefile
+@@ -1308,8 +1308,9 @@
+ endif
+ 
+ CC_OUTSPEC = -o $@
+-CC := ${GCC} ${CC_STD} -U__STRICT_ANSI__ ${CFLAGS_G} ${CFLAGS_O} ${CFLAGS_GIT} ${CFLAGS_I} -DSIM_COMPILER="${COMPILER_NAME}" -DSIM_BUILD_TOOL=simh-makefile -I . ${OS_CCDEFS} ${ROMS_OPT}
+-LDFLAGS := ${OS_LDFLAGS} ${NETWORK_LDFLAGS} ${LDFLAGS_O}
++# Packaging: honor environment CFLAGS/LDFLAGS (RPM optflags) and emit build-id
++CC := ${GCC} ${CC_STD} -U__STRICT_ANSI__ ${CFLAGS_G} ${CFLAGS_O} ${CFLAGS_GIT} ${CFLAGS_I} $(CFLAGS) -DSIM_COMPILER="${COMPILER_NAME}" -DSIM_BUILD_TOOL=simh-makefile -I . ${OS_CCDEFS} ${ROMS_OPT}
++LDFLAGS := $(LDFLAGS) -Wl,--build-id ${OS_LDFLAGS} ${NETWORK_LDFLAGS} ${LDFLAGS_O}
+ 
+ #
+ # Common Libraries
